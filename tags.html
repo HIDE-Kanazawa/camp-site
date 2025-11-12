@@ -1,0 +1,19 @@
+---
+layout: default
+title: "タグ一覧"
+permalink: /tags/
+---
+
+<div class="page-header">
+  <h1>タグ一覧</h1>
+  <p>すべてのタグから記事を探せます</p>
+</div>
+
+<div class="tags-cloud">
+  {% assign sorted_tags = site.tags | sort %}
+  {% for tag in sorted_tags %}
+    <a href="{{ '/tag/' | append: tag[0] | slugify | append: '/' | relative_url }}" class="tag-item" aria-label="{{ tag[0] }}の記事を見る">
+      {{ tag[0] }} <span class="tag-count">({{ tag[1] | size }})</span>
+    </a>
+  {% endfor %}
+</div>
